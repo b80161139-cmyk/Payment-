@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZYNKA PAYMENT</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    padding: 30px 50px;
+    border-radius: 15px;
+    text-align: center;
+    min-width: 300px;
+    color: #ecf0f1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  .logo {
+    font-size: 36px;
+    font-weight: 600;
+    color: #ecf0f1;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .contact {
+    font-size: 20px;
+    margin: 5px 0;
+    color: #bdc3c7;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+  }
+  .show {
+    opacity: 1 !important;
+    transform: translateY(0px) !important;
+  }
+  .btn {
+    padding: 10px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2980b9;
+    color: white;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  .btn:hover {
+    background-color: #1f618d;
+  }
+  .loading {
+    font-size: 22px;
+    color: #bdc3c7;
+    animation: blink 1s infinite;
+  }
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <!-- Loading -->
+  <div class="loading" id="loading">Loading...</div>
+  <!-- Cek Payment Button -->
+  <button class="btn" id="checkBtn" style="display:none;">Cek Payment</button>
+  <!-- Payment Info -->
+  <div id="paymentInfo" style="display:none;">
+    <div class="logo" id="logo">ZYNKA PAYMENT</div>
+    <div class="contact" id="dana">No DANA: 085606123943</div>
+    <div class="contact" id="wa">No WA: 085606123943</div>
+  </div>
+</div>
+
+<script>
+  const loading = document.getElementById('loading');
+  const checkBtn = document.getElementById('checkBtn');
+  const paymentInfo = document.getElementById('paymentInfo');
+  const logo = document.getElementById('logo');
+  const dana = document.getElementById('dana');
+  const wa = document.getElementById('wa');
+
+  // Simulasi loading 2 detik
+  setTimeout(() => {
+    loading.style.display = 'none';
+    checkBtn.style.display = 'inline-block';
+  }, 2000);
+
+  checkBtn.addEventListener('click', () => {
+    checkBtn.style.display = 'none';
+    paymentInfo.style.display = 'block';
+    // Animasi muncul bertahap
+    setTimeout(() => logo.classList.add('show'), 100);
+    setTimeout(() => dana.classList.add('show'), 300);
+    setTimeout(() => wa.classList.add('show'), 500);
+  });
+</script>
+
+</body>
+</html>
